@@ -13,6 +13,7 @@ for cat in cats:
     resized_image = img_from_ar.resize((50, 50))
     data.append(np.array(resized_image))
     labels.append(0)
+
 dogs=os.listdir("dog")
 for dog in dogs:
     imag=cv2.imread("dog/"+dog)
@@ -28,8 +29,9 @@ for bird in birds:
     resized_image = img_from_ar.resize((50, 50))
     data.append(np.array(resized_image))
     labels.append(2)
-fishs=os.listdir("goldfish")
-for fish in fishs:
+    
+fishes=os.listdir("goldfish")
+for fish in fishes:
     imag=cv2.imread("goldfish/"+fish)
     img_from_ar = Image.fromarray(imag, 'RGB')
     resized_image = img_from_ar.resize((50, 50))
@@ -106,8 +108,7 @@ model.add(Dense(4,activation="softmax"))
 model.summary()
 
 # compile the model
-model.compile(loss='categorical_crossentropy', optimizer='adam', 
-                  metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
 # Train the model
 model.fit(x_train,y_train,batch_size=30,epochs=40,verbose=1)
